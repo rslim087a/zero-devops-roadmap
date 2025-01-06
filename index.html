@@ -42,7 +42,7 @@
             margin-bottom: 1.5rem;
         }
 
-    p.subtitle {
+        p.subtitle {
         font-size: 1.25rem;
         max-width: 1200px;
         margin: 0 auto 5rem;
@@ -51,16 +51,35 @@
         text-align: center;
         padding: 0 1rem;
         
-        /* Force single-line display */
-        white-space: nowrap;
-        overflow: hidden;
+        /* Remove the nowrap and overflow properties */
+        /* white-space: nowrap; */
+        /* overflow: hidden; */
         /* text-overflow: ellipsis; */
-        }
+    }
 
-        p.subtitle strong {
-            color: #111827;
-            font-weight: 600;
+    p.subtitle strong {
+        color: #111827;
+        font-weight: 600;
+    }
+
+
+    /* Add responsive adjustments */
+    @media (max-width: 768px) {
+        p.subtitle {
+            font-size: 1.15rem;
+            margin-bottom: 4rem;
+            padding: 0 1.5rem;
+            line-height: 1.6;
         }
+    }
+
+    @media (max-width: 480px) {
+        p.subtitle {
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            padding: 0 1rem;
+        }
+    }
 
         .courses-grid {
             display: grid;
