@@ -308,6 +308,142 @@
                 font-size: 1.75rem;
             }
         }
+
+/* Replace your existing carousel styles with these */
+.testimonials-section {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.carousel {
+    background: #fff;
+    border-radius: 2rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    padding: 4rem 6rem; /* Increased padding for arrow space */
+    position: relative;
+}
+
+.testimonials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.testimonials-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+.testimonials-stars {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.star {
+    color: #FFD700;
+    font-size: 1.75rem;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    min-height: 260px; /* Adjusted height */
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+}
+
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.review-text {
+    font-size: 1.75rem;
+    line-height: 1.4;
+    color: #374151;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.review-author {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.review-role {
+    font-size: 1.1rem;
+    color: #6B7280;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #9CA3AF;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensure buttons are clickable */
+}
+
+.nav-button:hover {
+    color: #111827;
+}
+
+.nav-button.prev {
+    left: 2rem;
+}
+
+.nav-button.next {
+    right: 2rem;
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        padding: 3rem 2rem;
+    }
+    
+    .testimonials-header h2 {
+        font-size: 2rem;
+    }
+    
+    .review-text {
+        font-size: 1.25rem;
+    }
+    
+    .nav-button {
+        font-size: 1.5rem;
+    }
+    
+    .nav-button.prev {
+        left: 0.5rem;
+    }
+    
+    .nav-button.next {
+        right: 0.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -363,6 +499,52 @@
             </div>
         </div>
 
+        <section class="testimonials-section">
+            <div class="carousel">
+                <div class="testimonials-header">
+                    <h2>Student Reviews</h2>
+                    <div class="testimonials-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+                
+                <div class="carousel-inner">
+                    <div class="carousel-slide active">
+                        <p class="review-text">
+                            "The progression from Java to Kubernetes was seamless. I'm now confidently deploying microservices in my day job. Worth every penny!"
+                        </p>
+                        <p class="review-author">Adriana Estefania P.</p>
+                        <p class="review-role">Software Engineer</p>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <p class="review-text">
+                            "This course perfectly bridged the gap between my programming knowledge and modern cloud deployment practices. The hands-on projects were invaluable for my learning."
+                        </p>
+                        <p class="review-author">Jerome K.</p>
+                        <p class="review-role">Full Stack Developer</p>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <p class="review-text">
+                            "Clear explanations of complex concepts. The Spring Boot section was particularly enlightening. Highly recommend to any Java developer looking to level up."
+                        </p>
+                        <p class="review-author">Amanda L.</p>
+                        <p class="review-role">Java Developer</p>
+                    </div>
+
+
+                </div>
+                
+                <button class="nav-button prev" onclick="prevSlide()">‹</button>
+                <button class="nav-button next" onclick="nextSlide()">›</button>
+            </div>
+        </section>
+
         <section class="instructor-section">
             <div class="instructor-content">
                 <img src="instructor-img.jpg" alt="Instructor Photo" class="instructor-img">
@@ -411,6 +593,34 @@
             .catch(error => {
                 console.error('Error loading course URLs:', error);
             });
+    </script>
+
+    <script>
+// Carousel functionality
+// Update your carousel JavaScript
+const slides = document.querySelectorAll('.carousel-slide');
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach(slide => {
+        slide.classList.remove('active');
+        slide.style.position = 'absolute'; // Ensure all slides are positioned absolutely
+    });
+    slides[index].classList.add('active');
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Initialize first slide
+showSlide(0);
     </script>
 </body>
 </html>
