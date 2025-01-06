@@ -1,215 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Choose Your Course & Get a Discount</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Choose Your Course & Get a Discount</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts (Optional) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" 
-    rel="stylesheet"
-  >
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
 
-  <style>
-    /* Base Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #ececec, #ffffff);
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #ececec, #ffffff);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+        .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        }
 
-    /* Page Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
-    }
+        h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #111827;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        }
 
-    /* Heading / Subheading */
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #111;
-    }
-    p.subtitle {
-      font-size: 1.1rem;
-      max-width: 650px;
-      margin: 0.5rem auto 2.5rem;
-      line-height: 1.6;
-      color: #555;
-    }
+        p.subtitle strong {
+        color: #111827;
+        font-weight: 600;
+        }
 
-    /* Courses Grid */
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+        p.subtitle {
+        font-size: 1.15rem;
+        max-width: 1200px;
+        margin: 1rem auto 4rem;
+        line-height: 1.6;
+        color: #4B5563;
+        text-align: center;
+        padding: 0 1rem;
+        font-weight: 400;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
 
-    /* Course Card */
-    .course-card {
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .course-card:hover {
-      transform: translateY(-5px);
-    }
+        .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+        }
 
-    /* Course Icon or Image (optional) */
-    .course-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      color: #666; /* placeholder color if using an icon font */
-    }
+        .course-card {
+        background: #fff;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: all 0.3s ease;
+        height: 100%;
+        }
 
-    .course-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5rem;
-    }
-    .course-description {
-      font-size: 0.95rem;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-      padding: 0 1rem;
-    }
+        .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
 
-    /* CTA Button */
-    .btn-discount {
-      display: inline-block;
-      background-color: #111;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
-    }
-    .btn-discount:hover {
-      background-color: #444;
-    }
+        .icon-container {
+        background: #f0f0f0;
+        width: 110px;              /* Increased from 96px */
+        height: 110px;             /* Increased from 96px */
+        border-radius: 28px;       /* Slightly larger radius */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        transition: background-color 0.2s ease;
+        }
 
-    /* Footer (Optional) */
-    .footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
-      color: #777;
-    }
+        .course-card:hover .icon-container {
+        background: #e8e8e8;
+        }
 
-  </style>
+        .course-icon {
+        width: 72px;               /* Increased from 64px */
+        height: 72px;              /* Increased from 64px */
+        object-fit: contain;
+        }
+
+        .course-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1rem;
+        }
+
+        .course-description {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        flex-grow: 1;
+        max-width: 85%;            /* Added to control line length */
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        .btn-discount {
+        display: inline-block;
+        background-color: #111;
+        color: #fff;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        }
+
+        .btn-discount:hover {
+        background-color: #333;
+        transform: translateY(-2px);  /* Subtle lift effect */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+        text-align: center;
+        padding: 3rem 0;
+        color: #666;
+        margin-top: auto;
+        }
+
+        @media (max-width: 1400px) {
+        .courses-grid {
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
+            max-width: 900px;
+        }
+        }
+
+        @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        p.subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            white-space: normal;
+        }
+
+        .courses-grid {
+            grid-template-columns: 1fr;
+            max-width: 450px;
+        }
+
+        .container {
+            padding: 2rem 1rem;
+        }
+
+        .course-card {
+            padding: 2rem 1.5rem;
+        }
+
+        .icon-container {
+            width: 100px;
+            height: 100px;
+        }
+
+        .course-icon {
+            width: 65px;
+            height: 65px;
+        }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Zero to DevOps Master</h1>
+        <p class="subtitle">
+            From <strong>Java development</strong> to <strong>cloud deployment</strong>: build web apps with <strong>Spring Boot</strong>, then scale with <strong>Docker</strong> and <strong>Kubernetes</strong>.
+        </p>
 
-  <!-- Main Container -->
-  <div class="container">
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="icon-container">
+                    <img src="java-icon.png" alt="Java" class="course-icon">
+                </div>
+                <div class="course-title">Java Bootcamp</div>
+                <div class="course-description">
+                    Build robust applications with the world's most popular language.
+                </div>
+                <a href="https://www.udemy.com/course/the-complete-java-development-bootcamp/?couponCode=JAVA_BOOTCAMP"
+                   class="btn-discount"
+                   target="_blank">
+                    Get Java Discount
+                </a>
+            </div>
 
-    <!-- Page Heading -->
-    <h1>Zero to DevOps Master</h1>
-    <p class="subtitle">
-      Begin with Java, then Spring Boot, containerize with Docker, and finally orchestrate it all on Kubernetes—your step-by-step path to complete DevOps mastery!
-    </p>
+            <div class="course-card">
+                <div class="icon-container">
+                    <img src="spring-icon.png" alt="Spring Boot" class="course-icon">
+                </div>
+                <div class="course-title">Spring Boot</div>
+                <div class="course-description">
+                    Rapidly create modern, production-ready Java Web Apps.
+                </div>
+                <a href="https://www.udemy.com/course/the-complete-spring-boot-development-bootcamp/?couponCode=SPRING_BOOTCAMP"
+                   class="btn-discount"
+                   target="_blank">
+                    Get Spring Boot Discount
+                </a>
+            </div>
 
-    <!-- Courses Grid -->
-    <div class="courses-grid">
+            <div class="course-card">
+                <div class="icon-container">
+                    <img src="docker-icon.png" alt="Docker" class="course-icon">
+                </div>
+                <div class="course-title">Docker</div>
+                <div class="course-description">
+                    Package and deploy applications with modern container technology.
+                </div>
+                <a href="https://www.udemy.com/course/docker-bootcamp-conquer-docker-with-real-world-projects/?couponCode=DOCKER_BOOTCAMP"
+                   class="btn-discount"
+                   target="_blank">
+                    Get Docker Discount
+                </a>
+            </div>
 
-      <!-- Java Course Card -->
-      <div class="course-card">
-        <div class="course-icon">&#128187;</div> 
-        <div class="course-title">Java Bootcamp</div>
-        <div class="course-description">
-            Build robust applications with the world’s most popular language.
+            <div class="course-card">
+                <div class="icon-container">
+                    <img src="kubernetes-icon.png" alt="Kubernetes" class="course-icon">
+                </div>
+                <div class="course-title">Kubernetes</div>
+                <div class="course-description">
+                    Orchestrate containers and scale your applications effortlessly.
+                </div>
+                <a href="https://www.udemy.com/course/kubernetes-bootcamp-kubernetes-from-zero-to-cloud/?couponCode=KUBERNETES_BOOTCAMP"
+                   class="btn-discount"
+                   target="_blank">
+                    Get Kubernetes Discount
+                </a>
+            </div>
         </div>
-        <a 
-          href="https://www.udemy.com/course/the-complete-java-development-bootcamp/?couponCode=JAVA_BOOTCAMP"
-          class="btn-discount"
-          target="_blank"
-        >
-          Get Java Discount
-        </a>
-      </div>
-
-      <!-- Spring Boot Course Card -->
-      <div class="course-card">
-        <div class="course-icon">&#9889;</div> 
-        <div class="course-title">Spring Boot</div>
-        <div class="course-description">
-            Rapidly create modern, production-ready Java Web Apps.
-        </div>
-        <a 
-          href="https://www.udemy.com/course/the-complete-spring-boot-development-bootcamp/?couponCode=SPRING_BOOTCAMP"
-          class="btn-discount"
-          target="_blank"
-        >
-          Get Spring Boot Discount
-        </a>
-      </div>
-
-      <!-- Docker Course Card -->
-      <div class="course-card">
-        <div class="course-icon">&#128736;</div> 
-        <div class="course-title">Docker</div>
-        <div class="course-description">
-            Build, package, and deploy applications seamlessly using container technology.
-        </div>
-        <a 
-          href="https://www.udemy.com/course/docker-bootcamp-conquer-docker-with-real-world-projects/?couponCode=DOCKER_BOOTCAMP"
-          class="btn-discount"
-          target="_blank"
-        >
-          Get Docker Discount
-        </a>
-      </div>
-
-      <!-- Kubernetes Course Card -->
-      <div class="course-card">
-        <div class="course-icon">&#128640;</div> 
-        <div class="course-title">Kubernetes</div>
-        <div class="course-description">
-            Scale with confidence. Orchestrate containers and streamline operations in the cloud.
-        </div>
-        <a 
-          href="https://www.udemy.com/course/kubernetes-bootcamp-kubernetes-from-zero-to-cloud/?couponCode=KUBERNETES_BOOTCAMP"
-          class="btn-discount"
-          target="_blank"
-        >
-          Get Kubernetes Discount
-        </a>
-      </div>
-
     </div>
-  </div>
 
-  <!-- Optional Footer -->
-  <div class="footer">
-    &copy; 2025 Rayan Slim. All Rights Reserved.
-  </div>
-
+    <div class="footer">
+        &copy; 2025 Rayan Slim. All Rights Reserved.
+    </div>
 </body>
 </html>
