@@ -210,11 +210,7 @@
                 <div class="course-description">
                     Build robust applications with the world's most popular language.
                 </div>
-                <a href="https://www.udemy.com/course/the-complete-java-development-bootcamp/?couponCode=JAVA_BOOTCAMP"
-                   class="btn-discount"
-                   target="_blank">
-                    Get Java Discount
-                </a>
+                <a href="#" id="java-url" class="btn-discount" target="_blank">Get Java Discount</a>
             </div>
 
             <div class="course-card">
@@ -225,11 +221,7 @@
                 <div class="course-description">
                     Rapidly create modern, production-ready Java Web Apps.
                 </div>
-                <a href="https://www.udemy.com/course/the-complete-spring-boot-development-bootcamp/?couponCode=SPRING_BOOTCAMP"
-                   class="btn-discount"
-                   target="_blank">
-                    Get Spring Boot Discount
-                </a>
+                <a href="#" id="spring-url" class="btn-discount" target="_blank">Get Spring Boot Discount</a>
             </div>
 
             <div class="course-card">
@@ -240,11 +232,7 @@
                 <div class="course-description">
                     Package and deploy applications with modern container technology.
                 </div>
-                <a href="https://www.udemy.com/course/docker-bootcamp-conquer-docker-with-real-world-projects/?couponCode=DOCKER_BOOTCAMP"
-                   class="btn-discount"
-                   target="_blank">
-                    Get Docker Discount
-                </a>
+                <a href="#" id="docker-url" class="btn-discount" target="_blank">Get Docker Discount</a>
             </div>
 
             <div class="course-card">
@@ -255,11 +243,7 @@
                 <div class="course-description">
                     Orchestrate containers and scale your applications effortlessly.
                 </div>
-                <a href="https://www.udemy.com/course/kubernetes-bootcamp-kubernetes-from-zero-to-cloud/?couponCode=KUBERNETES_BOOTCAMP"
-                   class="btn-discount"
-                   target="_blank">
-                    Get Kubernetes Discount
-                </a>
+                <a href="#" id="kubernetes-url" class="btn-discount" target="_blank">Get Kubernetes Discount</a>
             </div>
         </div>
     </div>
@@ -267,5 +251,22 @@
     <div class="footer">
         &copy; 2025 Rayan Slim. All Rights Reserved.
     </div>
-</body>
+
+
+    <script>
+        fetch('./course-urls.json')
+          .then(response => response.json())
+          .then(data => {
+            // Update the course URLs and coupon codes
+            document.getElementById('java-url').href = `${data.java.url}?couponCode=${data.java.couponCode}`;
+            document.getElementById('spring-url').href = `${data.spring.url}?couponCode=${data.spring.couponCode}`;
+            document.getElementById('docker-url').href = `${data.docker.url}?couponCode=${data.docker.couponCode}`;
+            document.getElementById('kubernetes-url').href = `${data.kubernetes.url}?couponCode=${data.kubernetes.couponCode}`;
+          })
+          .catch(error => {
+            console.error('Error loading course URLs:', error);
+          });
+      </script>
+      
+      </body>
 </html>
