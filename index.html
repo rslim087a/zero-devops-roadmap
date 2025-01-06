@@ -261,7 +261,7 @@
             document.getElementById('java-url').href = `${data.java.url}?couponCode=${data.java.couponCode}`;
             document.getElementById('spring-url').href = `${data.spring.url}?couponCode=${data.spring.couponCode}`;
             document.getElementById('docker-url').href = `${data.docker.url}?couponCode=${data.docker.couponCode}`;
-            document.getElementById('kubernetes-url').href = `${data.kubernetes.url}?couponCode=${data.kubernetes.couponCode}`;
+            document.getElementById('kubernetes-url').href = `${data.kubernetes.url}`;
           })
           .catch(error => {
             console.error('Error loading course URLs:', error);

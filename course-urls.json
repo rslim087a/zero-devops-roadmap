@@ -12,7 +12,7 @@
         "couponCode": "DOCKER_BOOTCAMP"
     },
     "kubernetes": {
-        "url": "https://www.udemy.com/course/kubernetes-bootcamp-kubernetes-from-zero-to-cloud/",
-        "couponCode": "KUBERNETES_BOOTCAMP"
+        "url": "https://kubernetestraining.io/",
+        "couponCode": ""
     }
 }
