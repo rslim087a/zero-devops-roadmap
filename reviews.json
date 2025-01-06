@@ -1,0 +1,16 @@
+{
+    "reviews": [
+      {
+        "text": "Perfect progression from Java to Kubernetes. Each course builds naturally on the previous one.",
+        "author": "Sarah Johnson",
+        "role": "Cloud Architect",
+        "stars": 5
+      },
+      {
+        "text": "This course path helped me transition from a developer role to DevOps. The hands-on projects were invaluable.",
+        "author": "Alex Chen",
+        "role": "DevOps Engineer at Microsoft",
+        "stars": 5
+      }
+    ]
+  }

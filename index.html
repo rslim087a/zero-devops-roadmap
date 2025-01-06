@@ -3,194 +3,305 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Choose Your Course & Get a Discount</title>
+    <title>Zero to DevOps Master</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-        font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #ececec, #ffffff);
-        color: #333;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f3f4f6, #ffffff);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 4rem 2rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
         }
 
         h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: #111827;
-        text-align: center;
-        margin-bottom: 1.5rem;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            line-height: 1.7;
+            color: #4B5563;
+            text-align: center;
+            padding: 0 1rem;
         }
 
         p.subtitle strong {
-        color: #111827;
-        font-weight: 600;
-        }
-
-        p.subtitle {
-        font-size: 1.15rem;
-        max-width: 1200px;
-        margin: 1rem auto 4rem;
-        line-height: 1.6;
-        color: #4B5563;
-        text-align: center;
-        padding: 0 1rem;
-        font-weight: 400;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+            color: #111827;
+            font-weight: 600;
         }
 
         .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(300px, 1fr));
-        gap: 2rem;
-        margin: 0 auto;
-        padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .course-card {
-        background: #fff;
-        border-radius: 1.5rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        padding: 2.5rem 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition: all 0.3s ease;
-        height: 100%;
+            background: #fff;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .course-card:hover::before {
+            opacity: 1;
         }
 
         .icon-container {
-        background: #f0f0f0;
-        width: 110px;              /* Increased from 96px */
-        height: 110px;             /* Increased from 96px */
-        border-radius: 28px;       /* Slightly larger radius */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2rem;
-        transition: background-color 0.2s ease;
+            background: #f8fafc;
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
         }
 
         .course-card:hover .icon-container {
-        background: #e8e8e8;
+            transform: scale(1.1);
+            background: #f1f5f9;
         }
 
         .course-icon {
-        width: 72px;               /* Increased from 64px */
-        height: 72px;              /* Increased from 64px */
-        object-fit: contain;
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
         }
 
         .course-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #111;
-        margin-bottom: 1rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1rem;
         }
 
         .course-description {
-        font-size: 1.1rem;
-        color: #555;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-        flex-grow: 1;
-        max-width: 85%;            /* Added to control line length */
-        margin-left: auto;
-        margin-right: auto;
+            font-size: 1.1rem;
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
         }
 
         .btn-discount {
-        display: inline-block;
-        background-color: #111;
-        color: #fff;
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        border-radius: 0.75rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        white-space: nowrap;
+            display: inline-block;
+            background: #111827;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-discount::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
         }
 
         .btn-discount:hover {
-        background-color: #333;
-        transform: translateY(-2px);  /* Subtle lift effect */
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #1f2937;
+            transform: translateY(-2px);
+        }
+
+        .btn-discount:hover::after {
+            left: 100%;
+        }
+
+        .instructor-section {
+            background: #fff;
+            padding: 4rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            margin: 6rem auto;
+            max-width: 1200px;
+        }
+
+        .instructor-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        .instructor-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .instructor-info h2 {
+            font-size: 2rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .instructor-role {
+            font-size: 1.1rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #ecfdf5;
+            border-radius: 2rem;
+        }
+
+        .instructor-bio {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4B5563;
+            margin-bottom: 2.5rem;
+        }
+
+        .instructor-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #6B7280;
+            font-weight: 500;
         }
 
         .footer {
-        text-align: center;
-        padding: 3rem 0;
-        color: #666;
-        margin-top: auto;
+            text-align: center;
+            padding: 3rem 0;
+            color: #6B7280;
+            margin-top: auto;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 1400px) {
-        .courses-grid {
-            grid-template-columns: repeat(2, minmax(300px, 1fr));
-            max-width: 900px;
-        }
+            .courses-grid {
+                grid-template-columns: repeat(2, minmax(300px, 1fr));
+                max-width: 900px;
+            }
         }
 
         @media (max-width: 768px) {
-        h1 {
-            font-size: 2.5rem;
-        }
-        
-        p.subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            white-space: normal;
-        }
+            .container {
+                padding: 4rem 1.5rem;
+            }
 
-        .courses-grid {
-            grid-template-columns: 1fr;
-            max-width: 450px;
-        }
+            h1 {
+                font-size: 2.75rem;
+            }
+            
+            p.subtitle {
+                font-size: 1.15rem;
+                margin-bottom: 4rem;
+            }
 
-        .container {
-            padding: 2rem 1rem;
-        }
+            .courses-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                gap: 2rem;
+            }
 
-        .course-card {
-            padding: 2rem 1.5rem;
-        }
+            .course-card {
+                padding: 2.5rem 1.5rem;
+            }
 
-        .icon-container {
-            width: 100px;
-            height: 100px;
-        }
+            .instructor-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 2rem;
+            }
 
-        .course-icon {
-            width: 65px;
-            height: 65px;
-        }
+            .instructor-section {
+                padding: 3rem 1.5rem;
+                margin: 4rem 1rem;
+            }
+
+            .instructor-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
         }
     </style>
 </head>
@@ -206,11 +317,11 @@
                 <div class="icon-container">
                     <img src="java-icon.png" alt="Java" class="course-icon">
                 </div>
-                <div class="course-title">Java Bootcamp</div>
+                <div class="course-title">Java</div>
                 <div class="course-description">
                     Build robust applications with the world's most popular language.
                 </div>
-                <a href="#" id="java-url" class="btn-discount" target="_blank">Get Java Discount</a>
+                <a href="#" id="java-url" class="btn-discount" target="_blank">Enroll Now</a>
             </div>
 
             <div class="course-card">
@@ -221,7 +332,7 @@
                 <div class="course-description">
                     Rapidly create modern, production-ready Java Web Apps.
                 </div>
-                <a href="#" id="spring-url" class="btn-discount" target="_blank">Get Spring Boot Discount</a>
+                <a href="#" id="spring-url" class="btn-discount" target="_blank">Enroll Now</a>
             </div>
 
             <div class="course-card">
@@ -232,7 +343,7 @@
                 <div class="course-description">
                     Package and deploy applications with modern container technology.
                 </div>
-                <a href="#" id="docker-url" class="btn-discount" target="_blank">Get Docker Discount</a>
+                <a href="#" id="docker-url" class="btn-discount" target="_blank">Enroll Now</a>
             </div>
 
             <div class="course-card">
@@ -243,30 +354,58 @@
                 <div class="course-description">
                     Orchestrate containers and scale your applications effortlessly.
                 </div>
-                <a href="#" id="kubernetes-url" class="btn-discount" target="_blank">Get Kubernetes Discount</a>
+                <a href="#" id="kubernetes-url" class="btn-discount" target="_blank">Enroll Now</a>
             </div>
         </div>
+
+        <section class="instructor-section">
+            <div class="instructor-content">
+                <img src="instructor-img.jpg" alt="Instructor Photo" class="instructor-img">
+                <div class="instructor-info">
+                    <h2>Rayan Slim</h2>
+                    <p class="instructor-role">Cloud-Native Architect & DevOps Professional</p>
+                    <p class="instructor-bio">
+                        Senior DevOps Engineer with over a decade of software development experience, 
+                        now leading high-impact initiatives focused on DevOps and cloud-native solutions. 
+                        Passionate about guiding developers into cloud and DevOps roles, with a proven 
+                        track record of mentoring 250,000+ students worldwide on modern cloud technologies and practices.
+                    </p>
+                    <div class="instructor-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">250k+</span>
+                            <span class="stat-label">Students</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.8/5</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <div class="footer">
         &copy; 2025 Rayan Slim. All Rights Reserved.
     </div>
 
-
     <script>
         fetch('./course-urls.json')
-          .then(response => response.json())
-          .then(data => {
-            // Update the course URLs and coupon codes
-            document.getElementById('java-url').href = `${data.java.url}?couponCode=${data.java.couponCode}`;
-            document.getElementById('spring-url').href = `${data.spring.url}?couponCode=${data.spring.couponCode}`;
-            document.getElementById('docker-url').href = `${data.docker.url}?couponCode=${data.docker.couponCode}`;
-            document.getElementById('kubernetes-url').href = `${data.kubernetes.url}`;
-          })
-          .catch(error => {
-            console.error('Error loading course URLs:', error);
-          });
-      </script>
-      
-      </body>
+            .then(response => response.json())
+            .then(data => {
+                // Update the course URLs and coupon codes
+                document.getElementById('java-url').href = `${data.java.url}?couponCode=${data.java.couponCode}`;
+                document.getElementById('spring-url').href = `${data.spring.url}?couponCode=${data.spring.couponCode}`;
+                document.getElementById('docker-url').href = `${data.docker.url}?couponCode=${data.docker.couponCode}`;
+                document.getElementById('kubernetes-url').href = `${data.kubernetes.url}`;
+            })
+            .catch(error => {
+                console.error('Error loading course URLs:', error);
+            });
+    </script>
+</body>
 </html>

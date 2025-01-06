@@ -1,0 +1,22 @@
+{
+    "java": [
+      "Java fundamentals and OOP",
+      "Data structures & algorithms",
+      "Building real-world apps"
+    ],
+    "spring": [
+      "Build REST APIs",
+      "Database operations", 
+      "Spring Security"
+    ],
+    "docker": [
+      "Container basics",
+      "Docker compose",
+      "Production deployment"
+    ],
+    "kubernetes": [
+      "K8s architecture",
+      "Cluster management",
+      "Advanced deployment"
+    ]
+  }
