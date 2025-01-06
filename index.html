@@ -42,14 +42,19 @@
             margin-bottom: 1.5rem;
         }
 
-        p.subtitle {
-            font-size: 1.25rem;
-            max-width: 800px;
-            margin: 0 auto 5rem;
-            line-height: 1.7;
-            color: #4B5563;
-            text-align: center;
-            padding: 0 1rem;
+    p.subtitle {
+        font-size: 1.25rem;
+        max-width: 1200px;
+        margin: 0 auto 5rem;
+        line-height: 1.7;
+        color: #4B5563;
+        text-align: center;
+        padding: 0 1rem;
+        
+        /* Force single-line display */
+        white-space: nowrap;
+        overflow: hidden;
+        /* text-overflow: ellipsis; */
         }
 
         p.subtitle strong {
@@ -309,7 +314,7 @@
     <div class="container">
         <h1>Zero to DevOps Master</h1>
         <p class="subtitle">
-            From <strong>Java development</strong> to <strong>cloud deployment</strong>: build web apps with <strong>Spring Boot</strong>, then scale with <strong>Docker</strong> and <strong>Kubernetes</strong>.
+            From <strong>Java development</strong> to <strong>Spring Boot</strong> web apps, seamlessly scale with <strong>Docker</strong> and <strong>Kubernetes</strong> toward cloud deployment.
         </p>
 
         <div class="courses-grid">
