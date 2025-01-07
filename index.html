@@ -256,37 +256,64 @@ p.subtitle strong {
     color: #6B7280;
 }
 
+/* Updated Navigation Button Styles */
 .nav-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid #E5E7EB;
+    background: #ffffff;
+    border: 2px solid #CBD5E1;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    color: #6B7280;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    color: #1f2937;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
     z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-button:hover {
-    background: #fff;
-    color: #111827;
-    border-color: #D1D5DB;
+    background: #f8fafc;
+    color: #3b82f6;
+    border-color: #3b82f6;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .nav-button.prev {
-    left: 0.5rem;
+    left: -24px;
 }
 
 .nav-button.next {
-    right: 0.5rem;
+    right: -24px;
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    position: absolute;
+    bottom: 2rem;
+    right: 2.5rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #3b82f6;
+    transform: scale(1.2);
 }
 
 /* Instructor Section Styles */
@@ -491,6 +518,7 @@ p.subtitle strong {
         font-size: 0.75rem;
     }
 }
+
     </style>
 </head>
 <body>
@@ -635,9 +663,10 @@ p.subtitle strong {
                     </div>
 
                 </div>
-                
+            
                 <button class="nav-button prev" onclick="prevSlide()">‹</button>
                 <button class="nav-button next" onclick="nextSlide()">›</button>
+
             </div>
         </section>
 
@@ -697,14 +726,18 @@ p.subtitle strong {
 // Carousel functionality
 // Update your carousel JavaScript
 const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('.dot');
 let currentSlide = 0;
 
 function showSlide(index) {
     slides.forEach(slide => {
         slide.classList.remove('active');
-        slide.style.position = 'absolute'; // Ensure all slides are positioned absolutely
+        slide.style.position = 'absolute';
     });
+    dots.forEach(dot => dot.classList.remove('active'));
+    
     slides[index].classList.add('active');
+    dots[index].classList.add('active');
 }
 
 function nextSlide() {
@@ -719,6 +752,13 @@ function prevSlide() {
 
 // Initialize first slide
 showSlide(0);
-    </script>
+
+// Add click handlers for dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+    });
+});    </script>
 </body>
 </html>
