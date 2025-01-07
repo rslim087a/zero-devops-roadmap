@@ -146,6 +146,7 @@ p.subtitle strong:not(:last-child)::after {
 }
 
 .course-card {
+    position: relative; /* allows absolutely positioned badges to float on top */
     background: #fff;
     border-radius: 2rem;
     box-shadow: 0 20px 40px rgba(0,0,0,0.05);
@@ -476,6 +477,31 @@ p.subtitle strong:not(:last-child)::after {
     margin-top: auto;
     font-size: 0.95rem;
 }
+.course-tag {
+  position: absolute;
+  top: 1rem;
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* If you want different colors for each type of tag, optionally do: */
+.zero-tag {
+  left: 1rem;
+  background: #ef4444; /* or any color you prefer */
+}
+
+/* Put "DevOps" on the top-right */
+.devops-tag {
+  right: 1rem;
+  background: #10b981; /* or any color you prefer */
+}
 
 /* Responsive Styles */
 @media (min-width: 768px) {
@@ -596,6 +622,9 @@ p.subtitle strong:not(:last-child)::after {
     .review-role {
         font-size: 0.75rem;
     }
+
+
+
 }
 
     </style>
@@ -620,6 +649,8 @@ p.subtitle strong:not(:last-child)::after {
 
         <div class="courses-grid" id="courses">
             <div class="course-card">
+                <div class="course-tag zero-tag">Zero</div>
+
                 <div class="icon-container">
                     <img src="java-icon.png" alt="Java" class="course-icon">
                 </div>
@@ -653,7 +684,10 @@ p.subtitle strong:not(:last-child)::after {
             </div>
 
             <div class="course-card">
+                <div class="course-tag devops-tag">DevOps</div>
+
                 <div class="icon-container">
+
                     <img src="kubernetes-icon.png" alt="Kubernetes" class="course-icon">
                 </div>
                 <div class="course-title">Kubernetes</div>
