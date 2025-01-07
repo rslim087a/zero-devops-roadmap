@@ -14,6 +14,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* This accounts for the fixed header */
+}
+
 
 body {
     font-family: 'Inter', sans-serif;
@@ -23,13 +28,97 @@ body {
     display: flex;
     flex-direction: column;
 }
+.header {
+    background: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-.container {
-    width: 100%;
+.header-content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 6rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.site-name {
+    font-size: 1.75rem; /* Increased from 1.5rem */
+    font-weight: 700;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    padding: 0.5rem 0;
+    position: relative;
+}
+.site-name:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.site-name:hover:after {
+    transform: scaleX(1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: #4B5563;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #111827;
+}
+
+.nav-link.cta {
+    background: #111827;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.nav-link.cta:hover {
+    background: #1f2937;
+    transform: translateY(-1px);
+}
+
+.container {
+    padding: 4rem 2rem; /* Reduced from 6rem to account for header */
+}
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .container {
+        padding: 3rem 1.5rem;
+    }
+}
+
 
 /* Header Styles */
 h1 {
@@ -522,13 +611,24 @@ p.subtitle strong {
     </style>
 </head>
 <body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="site-name">Zero to DevOps</a>
+            <nav class="nav-links">
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#reviews" class="nav-link">Reviews</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+    
     <div class="container">
-        <h1>Zero to DevOps</h1>
         <p class="subtitle">
             From <strong>Java development</strong> to <strong>Spring Boot</strong> web apps, scale to the cloud with <strong>Docker</strong> and <strong>Kubernetes</strong>.
         </p>
 
-        <div class="courses-grid">
+        <div class="courses-grid" id="courses">
             <div class="course-card">
                 <div class="icon-container">
                     <img src="java-icon.png" alt="Java" class="course-icon">
@@ -574,7 +674,7 @@ p.subtitle strong {
             </div>
         </div>
 
-        <section class="testimonials-section">
+        <section class="testimonials-section" id="reviews">
             <div class="carousel">
                 <div class="testimonials-header">
                     <h2>Student Reviews</h2>
@@ -670,7 +770,7 @@ p.subtitle strong {
             </div>
         </section>
 
-        <section class="instructor-section">
+        <section class="instructor-section" id="about">
             <div class="instructor-content">
                 <img src="instructor-img.jpg" alt="Instructor Photo" class="instructor-img">
                 <div class="instructor-info">
@@ -760,5 +860,21 @@ dots.forEach((dot, index) => {
         showSlide(currentSlide);
     });
 });    </script>
+
+<script>// Add this to your existing JavaScript
+    document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    </script>
 </body>
 </html>
