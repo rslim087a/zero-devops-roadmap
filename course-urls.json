@@ -1,15 +1,15 @@
 {
     "java": {
         "url": "https://www.udemy.com/course/the-complete-java-development-bootcamp/",
-        "couponCode": "JAVA_BOOTCAMP"
+        "couponCode": "6D49F8B17717FBD6FF05"
     },
     "spring": {
         "url": "https://www.udemy.com/course/the-complete-spring-boot-development-bootcamp/",
-        "couponCode": "SPRING_BOOTCAMP"
+        "couponCode": "A0C7DD7D28954A6CD9A2"
     },
     "docker": {
         "url": "https://www.udemy.com/course/docker-bootcamp-conquer-docker-with-real-world-projects/",
-        "couponCode": "DOCKER_BOOTCAMP"
+        "couponCode": "C6164D4FEA321C5ABA89"
     },
     "kubernetes": {
         "url": "https://kubernetestraining.io/",
